@@ -1,0 +1,48 @@
+extends layout
+
+block content
+  // Wrapper
+  #wrapper
+  
+    #fitnessLog
+        h1 Fitness Log
+        
+    #addEntry
+        h3 Add Activity
+        form
+            div.form-group
+                label(for='inputActivityType') Activity Type:
+                select#inputActivityType.form-control
+                    optionDefault Run
+                    option Run
+                    option Bike
+                    option Swim
+                    option Weights
+                    option Walk
+                    option Other
+                    
+             div.form-group
+                label(for="formControlRange") Activity Length (Minutes)
+                input#inputActivityTime.form-control-range(type="range", min="0", max="60", value="30", onchange='updateTextInput(this.value)', required)
+                p#rangeValue 30
+
+            div.form-group
+                label(for='inputActivityType') Activity Date:
+                input#inputActivityDate.form-control(type='date',required)
+                
+            button#btnAddActivity.btn.btn-primary Add Activity
+
+    // USER LIST
+    h3 Activity List
+    #activityList
+        table.table
+            thead
+                tr
+                    th Activity Type
+                    th Activity Length (minutes)
+                    th Activity Date
+                    th 
+            tbody
+            
+    h3 Activity Trends        
+    canvas#myChart(width="80%" height="20%")
